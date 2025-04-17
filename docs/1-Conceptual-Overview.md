@@ -52,8 +52,8 @@ This implementation showcases the transformative potential of MCP:
 Checkpoint List
 ---------------
 
--   [ ]  Understand the concept of Model Context Protocol (MCP)
--   [ ]  Identify the key components of the GitHub Repository Analyzer
--   [ ]  Understand how MCP connects LLMs to external data sources
--   [ ]  Recognize the primary use cases for this tool
--   [ ]  Comprehend the significance of this implementation for AI capabilities
+-   [x]  Understand the concept of Model Context Protocol (MCP)
+-   [x]  Identify the key components of the GitHub Repository Analyzer
+-   [x]  Understand how MCP connects LLMs to external data sources
+-   [x]  Recognize the primary use cases for this tool
+-   [x]  Comprehend the significance of this implementation for AI capabilities

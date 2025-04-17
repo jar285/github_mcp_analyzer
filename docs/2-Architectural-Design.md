@@ -98,8 +98,8 @@ The system is designed to be extensible:
 Checkpoint List
 ---------------
 
--   [ ]  Understand the four main components of the system
--   [ ]  Visualize the flow of data between components
--   [ ]  Comprehend the standard pattern for tool implementation
--   [ ]  Recognize the security considerations in the design
--   [ ]  Understand how the system is designed for extensibility
+-   [x]  Understand the four main components of the system
+-   [x]  Visualize the flow of data between components
+-   [x]  Comprehend the standard pattern for tool implementation
+-   [x]  Recognize the security considerations in the design
+-   [x]  Understand how the system is designed for extensibility

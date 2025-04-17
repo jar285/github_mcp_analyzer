@@ -178,9 +178,9 @@ Example error scenarios:
 Checkpoint List
 ---------------
 
--   [ ]  Understand the process for registering the MCP server with Claude Desktop
--   [ ]  Review example prompts for interacting with the GitHub Repository Analyzer
--   [ ]  Understand the expected input patterns for each tool
--   [ ]  Understand the expected output patterns from each tool
--   [ ]  Know how Claude should handle and communicate errors
--   [ ]  Prepare to test integration with sample prompts
+-   [x]  Understand the process for registering the MCP server with Claude Desktop
+-   [x]  Review example prompts for interacting with the GitHub Repository Analyzer
+-   [x]  Understand the expected input patterns for each tool
+-   [x]  Understand the expected output patterns from each tool
+-   [x]  Know how Claude should handle and communicate errors
+-   [x]  Prepare to test integration with sample prompts
