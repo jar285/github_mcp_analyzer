@@ -5,6 +5,7 @@
 venv/
 .venv/
 env/
+venv_py310/
 
 # Python bytecode
 __pycache__/

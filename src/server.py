@@ -227,5 +227,87 @@ async def generate_activity_chart(
 
 
 if __name__ == "__main__":
-    # Run the server
-    server.run(transport="stdio")
+    import argparse
+    import uvicorn
+    from starlette.applications import Starlette
+    from starlette.routing import Mount, Route
+    from starlette.responses import HTMLResponse
+    
+    parser = argparse.ArgumentParser(description="GitHub Repository Analyzer MCP Server")
+    parser.add_argument("--debug", action="store_true", help="Enable debug mode")
+    parser.add_argument("--host", default="127.0.0.1", help="Host to bind to")
+    parser.add_argument("--port", type=int, default=8000, help="Port to bind to")
+    args = parser.parse_args()
+    
+    if args.debug:
+        logging.getLogger().setLevel(logging.DEBUG)
+        print(f"Starting GitHub Repository Analyzer MCP Server on http://{args.host}:{args.port}")
+    
+    # Create a landing page for web browsers
+    async def landing_page(request):
+        html_content = f"""
+        <!DOCTYPE html>
+        <html>
+        <head>
+            <title>GitHub Repository Analyzer MCP Server</title>
+            <style>
+                body {{ font-family: Arial, sans-serif; margin: 40px; line-height: 1.6; }}
+                h1 {{ color: #333; }}
+                h2 {{ color: #444; }}
+                pre {{ background-color: #f4f4f4; padding: 10px; border-radius: 5px; }}
+                .container {{ max-width: 800px; margin: 0 auto; }}
+                .tool {{ margin-bottom: 20px; border-left: 4px solid #0366d6; padding-left: 20px; }}
+            </style>
+        </head>
+        <body>
+            <div class="container">
+                <h1>GitHub Repository Analyzer MCP Server</h1>
+                <p>This server implements the Model Context Protocol (MCP) for analyzing GitHub repositories.</p>
+                <p>Server is running at: <code>http://{args.host}:{args.port}</code></p>
+                
+                <h2>Available Tools</h2>
+                <div class="tool">
+                    <h3>get_repository_info</h3>
+                    <p>Retrieve basic metadata about a GitHub repository.</p>
+                </div>
+                <div class="tool">
+                    <h3>get_repository_issues</h3>
+                    <p>List and categorize repository issues.</p>
+                </div>
+                <div class="tool">
+                    <h3>get_commit_history</h3>
+                    <p>Analyze recent code changes in a repository.</p>
+                </div>
+                <div class="tool">
+                    <h3>get_activity_metrics</h3>
+                    <p>Calculate repository activity metrics.</p>
+                </div>
+                <div class="tool">
+                    <h3>generate_activity_chart</h3>
+                    <p>Create a visual chart of repository commit activity.</p>
+                </div>
+                
+                <h2>Available Resources</h2>
+                <div class="tool">
+                    <h3>readme://{{{{repo_name}}}}</h3>
+                    <p>Get the README content from a GitHub repository.</p>
+                </div>
+                
+                <h2>Note</h2>
+                <p>This server is designed to be used with MCP clients. Direct browser access to MCP endpoints may not work as expected.</p>
+            </div>
+        </body>
+        </html>
+        """
+        return HTMLResponse(html_content)
+    
+    # Create a Starlette app and mount the MCP server
+    app = Starlette(
+        routes=[
+            Route('/', endpoint=landing_page),
+            Mount('/mcp', app=server.sse_app()),
+        ]
+    )
+    
+    # Run the server with uvicorn
+    uvicorn.run(app, host=args.host, port=args.port)

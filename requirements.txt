@@ -13,5 +13,5 @@ matplotlib>=3.7.0
 fastapi>=0.104.0
 uvicorn>=0.23.2
 
-# MCP Python SDK - commented out as it's not available on PyPI
-# mcp-python-sdk>=1.5.0
+# MCP Python SDK
+mcp>=1.6.0
