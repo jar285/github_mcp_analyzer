@@ -1,0 +1,17 @@
+# GitHub Repository Analyzer MCP Server dependencies
+
+# GitHub API Client
+PyGithub>=2.1.1
+
+# Environment Management
+python-dotenv>=1.0.0
+
+# Data Visualization
+matplotlib>=3.7.0
+
+# Additional dependencies
+fastapi>=0.104.0
+uvicorn>=0.23.2
+
+# MCP Python SDK - commented out as it's not available on PyPI
+# mcp-python-sdk>=1.5.0
